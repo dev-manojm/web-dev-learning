@@ -1,0 +1,41 @@
+<html>
+  <body>
+    <form>
+      Name: <input type="text" placeholder="Enter the name" required /><br />
+      Email: <input type="email" placeholder="Enter the email" required /><br />
+      URL:<input type="url" placeholder="Enter the url" required /><br />
+      Age:<input
+        type="number"
+        placeholder="Enter the age"
+        required
+        min="1"
+        step="2"
+      /><br />
+      Range:<input
+        type="range"
+        placeholder="Range"
+        required
+        min="1"
+        max="20"
+        step="2"
+        data-value="1 9"
+      /><br />
+      DOB:<input type="date" /><br />
+      time:<input type="time" /><br />
+      datetime:<input type="datetime" /><br />
+      datetime-local:<input type="datetime-local" /><br />
+      month:<input type="month" /><br />
+      week:<input type="week" /><br />
+      color:<input type="color" /><br />
+
+      Search: <input type="text" name="users" list="users" />
+
+      <button type="Submit">Add User</button>
+    </form>
+    <datalist id="users">
+      <option value="Anna"> </option>
+      <option value="karan"> </option>
+      <option value="munny"> </option>
+    </datalist>
+  </body>
+</html>
