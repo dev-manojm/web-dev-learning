@@ -1,0 +1,5 @@
+1. Statergy
+2. Factory
+3. Singelton
+4. Decorator
+5. Observer
