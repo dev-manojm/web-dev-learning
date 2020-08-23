@@ -1,0 +1,32 @@
+<html>
+  <head> </head>
+  <body>
+      <button onclick="makebig()">BIG</button>
+      <button onclick="makesmall()">SMALL</button>
+      <button onclick="makenormal()">NORMAL</button>
+      <button onclick="playpause()">PLAY/PAUSE</button>
+    <video id="vid" width="320" height="240" controls>
+      <source src="video1.mp4" />
+    </video>
+    <script>
+      var vd =document.getElementById("vid")
+        function playpause(){
+            if (vd.pause()){
+                vd.play()
+            }else{
+                vd.pause()
+            }
+        }
+        function makesmall(){
+            vd.width=240
+        }
+        function makenormal(){
+            vd.width=320
+        }
+        function makebig(){
+            vd.width=640
+        }
+    
+    </script>
+  </body>
+</html>
