@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>
+      var db;
+      $(document).ready(function () {
+        $("#button1").click(function () {
+          db = openDatabase("my app", "1.0", "contains user info", "20000");
+          alert("The db is created");
+        });
+
+        $("#button1").click(function () {
+          db.transaction(function (t) {
+            var name = document.getElementById(name);
+            var email = document.getElementById(email);
+            t.executeSql("create table emp(fname string, email )");
+            t.executeSql("insert into emp(fname, email) values(name,email)", [
+              name,
+              email,
+            ]);
+          });
+        });
+      });
+      function showRecords() {
+        //do something
+      }
+      function handleError(e) {
+        alert(e);
+      }
+    </script>
+  </head>
+  <body>
+    Name:<input type="text" id="name" /> Email:<input type="email" id="email" />
+    <input id="button1" type="button" value="Create Database" />
+    <input id="button2" type="button" value="Drop" />
+  </body>
+</html>
