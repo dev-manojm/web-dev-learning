@@ -9,23 +9,38 @@
       font-size: 0.8em;
     }
     header,
-    footer,
     section,
-    article {
+    footer {
       border: 1px solid grey;
       margin: 5px;
       margin-bottom: 15px;
       padding: 8px;
       background-color: white;
     }
-    header,
+
+    article {
+      border: 1px solid grey;
+      margin: 5px;
+      margin-bottom: 15px;
+      padding: 8px;
+      background-color: white;
+      border: 10px solid green;
+      border-image: url("border.png") 30 30 round;
+    }
+    header {
+      background-color: hsla(420, 40%, 20%, 43%);
+      border: 2px solid black;
+      border-radius: 20px 30px;
+    }
     footer {
       color: white;
-      background-color: #444;
+      background-color: rgba(255, 0, 0, 0.8);
       margin-bottom: 5px;
+      border: 2px solid peachpuff;
+      border-radius: 25px;
     }
     section {
-      background-color: #ddd;
+      background: linear-gradient(red, orange, yellow, green, blue, violet);
     }
     nav ul {
       margin: 0;
