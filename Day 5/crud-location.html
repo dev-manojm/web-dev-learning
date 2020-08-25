@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title></title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script type="text/javascript">
+      window.onload = function () {
+        var startPos;
+        navigator.geolocation.getCurrentPosition(function (position) {
+          startPos = position;
+          s = startPos.coords.latitude;
+          t = startPos.coords.longitude;
+        });
+      };
+
+      $(document).ready(function () {
+        var Employee = {};
+        $("#btnsave").click(function () {
+          Employee.EmpNo = $("#txteno").val();
+          Employee.EmpName = $("#txtename").val();
+          Employee.DeptName = $("#txtdname").val();
+          Employee.Designation = $("#txtdesig").val();
+          Employee.Salary = $("#txtsal").val();
+
+          localStorage.setItem("EmployeeInfo", JSON.stringify(Employee));
+          localStorage.setItem("s1", JSON.stringify(s));
+          localStorage.setItem("t1", JSON.stringify(t));
+        });
+
+        $("#btnretrieve").click(function () {
+          if (localStorage.getItem("EmployeeInfo")) {
+            Employee = JSON.parse(localStorage.getItem("EmployeeInfo"));
+            $("#txteno").val(Employee.EmpNo);
+            $("#txtename").val(Employee.EmpName);
+            $("#txtdname").val(Employee.DeptName);
+            $("#txtdesig").val(Employee.Designation);
+            $("#txtsal").val(Employee.Salary);
+            var latlon =
+              JSON.parse(localStorage.getItem("s1")) +
+              "," +
+              JSON.parse(localStorage.getItem("t1"));
+
+            var img_url =
+              "http://maps.googleapis.com/maps/api/staticmap?center=" +
+              latlon +
+              "&zoom=14&size=400x300&sensor=false";
+            document.getElementById("mapholder").innerHTML =
+              "<img src='" + img_url + "'>";
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <table style="width: 100%;">
+      <tr>
+        <td>EmpNo</td>
+        <td>
+          <input id="txteno" type="text" />
+        </td>
+      </tr>
+      <tr>
+        <td>EmpName</td>
+        <td>
+          <input id="txtename" type="text" />
+        </td>
+      </tr>
+      <tr>
+        <td>DeptName</td>
+        <td>
+          <input id="txtdname" type="text" />
+        </td>
+      </tr>
+      <tr>
+        <td>Designation</td>
+        <td>
+          <input id="txtdesig" type="text" />
+        </td>
+      </tr>
+      <tr>
+        <td>Salary</td>
+        <td>
+          <input id="txtsal" type="text" />
+        </td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>
+          <input
+            id="btnsave"
+            type="button"
+            value="Save"
+          />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input id="btnretrieve" type="button" value="Retrieve" />
+        </td>
+      </tr>
+    </table>
+    <div id="mapholder"></div>
+  </body>
+</html>

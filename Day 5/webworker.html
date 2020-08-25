@@ -1,0 +1,21 @@
+<html>
+  <body>
+    <div id="data"></div>
+    <button onclick="startworker()" value="Start">Start</button>
+    <button onclick="stopworker()" value="Stop">Stop</button>
+    <script>
+      var worker;
+      function startworker() {
+        worker = new Worker("webworker.js");
+        worker.onmessage = update;
+        worker.postMessage("start");
+      }
+      function update(event) {
+        document.getElementById("data").innerHTML = event.data;
+      }
+      function stopworker() {
+        worker.terminate;
+      }
+    </script>
+  </body>
+</html>
