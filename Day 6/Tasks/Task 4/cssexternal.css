@@ -1,0 +1,14 @@
+.heading {
+  background-color: lightblue;
+}
+.odd {
+  background-color: yellow;
+}
+.even {
+  background-color: green;
+}
+table {
+  width: 100px;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
