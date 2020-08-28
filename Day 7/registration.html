@@ -1,0 +1,283 @@
+<html>
+  <head>
+    <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+    crossorigin="anonymous"
+  />
+    <meta charset="UTF-8" />
+    <title>Registration Form</title>
+    
+
+    <script>
+        $(document).ready(function() {
+    $('#contact_form').bootstrapValidator({
+        // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            first_name: {
+                validators: {
+                        stringLength: {
+                        min: 2,
+                    },
+                        notEmpty: {
+                        message: 'Please enter your First Name'
+                    }
+                }
+            },
+             last_name: {
+                validators: {
+                     stringLength: {
+                        min: 2,
+                    },
+                    notEmpty: {
+                        message: 'Please enter your Last Name'
+                    }
+                }
+            },
+            mailaddress1: {
+                validators: {
+                     stringLength: {
+                        min: 2,
+                    },
+                    notEmpty: {
+                        message: 'Please enter your Address'
+                    }
+                }
+            },
+            mailaddress2: {
+                validators: {
+                     stringLength: {
+                        min: 2,
+                    },
+                    notEmpty: {
+                        message: 'Please enter your Address'
+                    }
+                }
+            },
+            city: {
+                validators: {
+                     stringLength: {
+                        min: 2,
+                    },
+                    notEmpty: {
+                        message: 'Please enter your City'
+                    }
+                }
+            },
+
+            email: {
+                validators: {
+                    notEmpty: {
+                        message: 'Please enter your Email Address'
+                    },
+                    emailAddress: {
+                        message: 'Please enter a valid Email Address'
+                    }
+                }
+            },
+            contact_no: {
+                validators: {
+                  stringLength: {
+                        min: 12, 
+                        max: 12,
+                    notEmpty: {
+                        message: 'Please enter your Contact No.'
+                     }
+                }
+            }},
+            zip: {
+                validators: {
+                  stringLength: {
+                        min: 0, 
+                        max: 0,
+                    notEmpty: {
+                        message: 'Please enter your Zip Code.'
+                     }
+                }
+            }},
+			 state: {
+                validators: {
+                    notEmpty: {
+                        message: 'Please select your State'
+                    }
+                }
+            },
+                }
+            
+        })
+        .on('success.form.bv', function(e) {
+            $('#success_message').slideDown({ opacity: "show" }, "slow") // Do something ...
+                $('#contact_form').data('bootstrapValidator').resetForm();
+
+            // Prevent form submission
+            e.preventDefault();
+
+            // Get the form instance
+            var $form = $(e.target);
+
+            // Get the BootstrapValidator instance
+            var bv = $form.data('bootstrapValidator');
+
+            // Use Ajax to submit form data
+            $.post($form.attr('action'), $form.serialize(), function(result) {
+                console.log(result);
+            }, 'json');
+        });
+});
+    </script>
+  </head>
+  <body>
+      <div class="container">
+      <form class="well form-horizontal" action=" " method="post"  id="contact_form">
+        <fieldset>
+            <legend><center><h2><img src="employee.jpg" alt="" height="50" width="100" /><b>Registration Form</b></h2></center></legend><br>
+      
+            <div class="form-group">
+                <label class="col-md-4 control-label">First Name</label>  
+                <div class="col-md-4 inputGroupContainer">
+                <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <input  name="first_name" placeholder="First Name" class="form-control"  type="text">
+                  </div>
+                </div>
+              </div>
+     
+        <div class="form-group">
+            <label class="col-md-4 control-label" >Last Name</label> 
+              <div class="col-md-4 inputGroupContainer">
+              <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input name="last_name" placeholder="Last Name" class="form-control"  type="text">
+              </div>
+            </div>
+          </div>
+          
+            <div class="form-group">
+                <label class="col-md-4 control-label" >Mail Address 1</label> 
+                  <div class="col-md-4 inputGroupContainer">
+                  <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
+                <input name="mailaddress1" placeholder="Mail-Address 1" class="form-control"  type="text">
+                  </div>
+                </div>
+              </div>
+              
+                <div class="form-group">
+                    <label class="col-md-4 control-label" >Mail Address 2</label> 
+                      <div class="col-md-4 inputGroupContainer">
+                      <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
+                    <input name="mailaddress2" placeholder="Mail-Address 2" class="form-control"  type="text">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-4 control-label" >City</label> 
+                      <div class="col-md-4 inputGroupContainer">
+                      <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
+                    <input name="city" placeholder="City" class="form-control"  type="text">
+                      </div>
+                    </div>
+                  </div>
+
+      <div class="form-group"> 
+        <label class="col-md-4 control-label">State</label>
+          <div class="col-md-4 selectContainer">
+          <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+          <select name="state" class="form-control selectpicker">
+            <option value="">Select your State</option>
+            <option>Maharashtra</option>
+            <option>Gujrat</option>
+            <option >Assam</option>
+            <option >Haryana</option>
+            <option >Delhi</option>
+            <option >Punjab</option>
+          </select>
+        </div>
+      </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4 control-label" >Zip</label> 
+          <div class="col-md-4 inputGroupContainer">
+          <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
+        <input name="zip" placeholder="000000" class="form-control"  type="text">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4 control-label">E-Mail</label>  
+          <div class="col-md-4 inputGroupContainer">
+          <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+        <input name="email" placeholder="E-Mail Address" class="form-control"  type="text">
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4 control-label">Contact No.</label>  
+          <div class="col-md-4 inputGroupContainer">
+          <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+        <input name="contact_no" placeholder="(639)" class="form-control" type="text">
+          </div>
+        </div>
+      </div>
+      <div class="form-group"> 
+        <label class="col-md-4 control-label">Gender</label>
+          <div class="col-md-4 selectContainer">
+          <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+          <label><input name="gendermale"  class="form-control" type="radio"> Male</label>
+          &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+          <label
+            ><input name="genderfemale"  class="form-control" type="radio"> Female</label
+          >
+        </div>
+        </div>
+      </div>
+      <div class="row">
+        <label>Languages Known </label>
+        <div class="form-inline"> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+          <label
+            ><input type="checkbox" name="lang[]" value="hindi" /> Hindi</label
+          > &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+          <label
+            ><input type="checkbox" name="lang[]" value="english" />
+            English</label
+          > &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+          <label
+            ><input type="checkbox" name="lang[]" value="marathi" />
+            Marathi</label
+          >
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group">
+            <label class="col-md-4 control-label"></label>
+            <div class="col-md-4"><br>
+              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button type="submit" class="btn btn-warning" >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSUBMIT <span class="glyphicon glyphicon-send"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-4 control-label"></label>
+            <div class="col-md-4"><br>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button type="submit" class="btn btn-warning" >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspRESET <span class="glyphicon glyphicon-remove"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+            </div>
+          </div>
+        
+      </div>
+    </form>
+</div>
+</body>
+</html>

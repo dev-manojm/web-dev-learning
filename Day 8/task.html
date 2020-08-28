@@ -1,0 +1,59 @@
+<html>
+  <head> </head>
+
+  <body>
+    <p id="demo" onclick="something()">
+      Click me to change my HTML content (innerHTML).
+    </p>
+  </body>
+  <script>
+    function something() {
+      var library = [
+        {
+          author: "Bill Gates",
+          title: "The Road Ahead",
+          readingStatus: true,
+        },
+        {
+          author: "Steve Jobs",
+          title: "Walter Isaacson",
+          readingStatus: true,
+        },
+        {
+          author: "Suzanne Collins",
+          title: "Mockingjay: The Final Book of The Hunger Games",
+          readingStatus: false,
+        },
+      ];
+
+      //   for (var i = 0; i <= library.length; i++) {
+      //     console.log(
+      //       "Author: " +
+      //         library[i].author +
+      //         ", Title :" +
+      //         library[i].title +
+      //         ", Reading Status: " +
+      //         library[i].readingStatus
+      //     );
+
+      //     document.getElementById("demo").innerHTML =
+      //       "Author: " +
+      //       library[i].author +
+      //       ", Title :" +
+      //       library[i].title +
+      //       ", Reading Status: " +
+      //       library[i].readingStatus;
+      //   }
+
+      document.write("<table border ='1'>");
+      document.write("<tr><th> Author</th>");
+      document.write("<th> Title</th>");
+      document.write("<th> Reading Status</th></tr>");
+      for (book of library) {
+        document.write(`<tr><td>${book.author}</td>`);
+        document.write(`<td>${book.title}</td>`);
+        document.write(`<td>${book.readStatus}</tr></td>`);
+      }
+    }
+  </script>
+</html>
