@@ -1,2 +1,5 @@
-<h1>{{title}}</h1>
-<app-mycomp></app-mycomp>
+<h1>City:<input type="text" [(ngModel)]="title" /></h1>
+{{ title }}
+<button (click)="callme()" class="btn btn-primary">call</button>
+<button (click)="callme()" class="btn btn-primary" [class.active]="active">call</button>
+<app-header></app-header>
