@@ -10,9 +10,10 @@ import { FormsModule } from '@angular/forms';
 import { FavoriteComponent } from './favorite/favorite.component';
 import { HeaderComponent } from './header/header.component';
 import { LikeComponent } from './like/like.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
-  declarations: [AppComponent, MycompComponent, FavoriteComponent, HeaderComponent, LikeComponent],
+  declarations: [AppComponent, MycompComponent, FavoriteComponent, HeaderComponent, LikeComponent, FooterComponent],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [userData, deptData],
   bootstrap: [AppComponent],
