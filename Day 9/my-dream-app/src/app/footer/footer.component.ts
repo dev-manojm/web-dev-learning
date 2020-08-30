@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Dbconnect } from '../shared/dbconnect.service';
-import { NgForm }from '@angular/forms'
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-footer',
@@ -8,14 +8,12 @@ import { NgForm }from '@angular/forms'
   styleUrls: ['./footer.component.css'],
 })
 export class FooterComponent implements OnInit {
-  constructor(private fn: Dbconnect) {
-    this.fn.addusertoDB();
-  }
+  constructor(private fn: Dbconnect) {}
 
   ngOnInit(): void {}
 
-  callme(nf:NgForm) {
-    console.log('Its called', nf.value);
-    this.fn.addusertoDB();
+  callme(nf: NgForm) {
+    console.log('Its called');
+    this.fn.addusertoDB(nf.value);
   }
 }
