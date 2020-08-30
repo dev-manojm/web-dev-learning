@@ -5,7 +5,7 @@ export class Dbconnect {
   addusertoDB(userData: any) {
     console.log('user is added', userData);
     return this.http
-      .post('https://manojpro-2a81a.firebaseio.com/UserData.json', userData)
+      .post('Put Your URL here/UserData.json', userData)
       .subscribe((udata) => {
         console.log(udata);
       });
